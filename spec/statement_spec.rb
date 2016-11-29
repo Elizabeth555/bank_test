@@ -28,6 +28,12 @@ describe Statement do
       expect(@statement.balance).to eq(0)
     end
 
+    it "should add transaction to array of transactions" do
+      trans = Transaction.new("20/03/2017", 10000)
+      @statement.change_balance(trans)
+      expect(@statement.transactions.length).to eq(1)
+    end
+
   end
 
 
