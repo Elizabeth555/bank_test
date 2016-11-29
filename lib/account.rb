@@ -5,39 +5,33 @@ class Account
 
   attr_reader :balance, :statement
 
+  INITIAL_BALANCE = 1000
+
 def initialize
-  @balance = 1000
+  @balance = INITIAL_BALANCE
   @statement = Statement.new
 end
 
 def print_statement
-  return @statement.display
+  return statement.display
 end
 
 def deposit(date, amount)
-  transaction = Transaction.new(date, amount)
-  @statement.save_deposit(transaction)
-  change_balance(transaction)
+  change_balance(amount)
+  transaction = Transaction.new(date, amount, balance)
+  statement.save_deposit(transaction)
 end
 
 def withdraw(date, amount)
-  create_negative_amount(amount)
-  transaction = Transaction.new(date, @withdraw_amount)
-  @statement.save_withdrawl(transaction)
-  change_balance(transaction)
+  change_balance(amount)
+  transaction = Transaction.new(date, -amount, balance)
+  statement.save_withdrawl(transaction)
 end
 
 private
 
-def change_balance(transaction)
-  @balance = @balance + transaction.amount
+def change_balance(amount)
+  @balance = @balance + amount
 end
-
-def create_negative_amount(amount)
-  @withdraw_amount = amount * -1
-end
-
-
-
 
 end
