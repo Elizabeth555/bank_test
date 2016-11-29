@@ -12,16 +12,20 @@ def initialize
   @transactions = []
 end
 
-def save_history(transaction)
-    @transactions  << {date: transaction.date, amount: transaction.amount, balance: balance}
+def save_deposit(transaction)
+    @transactions  << {date: transaction.date, credit: transaction.amount, deposit: " " ,balance: balance}
+end
+
+def save_withdrawl(transaction)
+    @transactions  << {date: transaction.date, credit: " " , deposit: transaction.amount ,balance: balance}
 end
 
 def display
- puts "Date     || Amount     || Balance      "
- puts "----------------------------------------"
+ puts "Date     || Credit     || Debit       || Balance      "
+ puts "-------------------------------------------------------"
 
  @transactions.each do |transaction|
-   puts "#{transaction[:date]} || #{transaction[:amount]} || #{transaction[:balance]}\n"
+   puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}\n"
  end
 
 end

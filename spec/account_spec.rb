@@ -15,14 +15,12 @@ describe Account do
     context "interacting with transaction" do
 
       it "should update positive balance from transaction amount" do
-        trans = Transaction.new("25/12/2016", 1000)
-        @account.change_balance(trans)
+        @account.deposit("25/12/2016", 1000)
         expect(@account.balance).to eq(2000)
       end
 
       it "should update with negative balance from transaction amount" do
-        trans = Transaction.new("1/01/2017", -1000)
-        @account.change_balance(trans)
+        @account.withdraw("01/01/2017", 1000)
         expect(@account.balance).to eq(0)
       end
 

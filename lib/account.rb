@@ -10,13 +10,31 @@ def initialize
   @statement = Statement.new
 end
 
-def change_balance(transaction)
-  @balance = @balance + transaction.amount
-  @statement.save_history(transaction)
-end
-
 def print_statement
   @statement.display
+end
+
+def deposit(date, amount)
+  transaction = Transaction.new(date, amount)
+  @statement.save_deposit(transaction)
+  change_balance(transaction)
+end
+
+def withdraw(date, amount)
+  create_negative_amount(amount)
+  transaction = Transaction.new(date, @withdraw_amount)
+  @statement.save_withdrawl(transaction)
+  change_balance(transaction)
+end
+
+private
+
+def change_balance(transaction)
+  @balance = @balance + transaction.amount
+end
+
+def create_negative_amount(amount)
+  @withdraw_amount = amount * -1
 end
 
 

@@ -8,19 +8,19 @@ describe Statement do
 
   it "should add transaction to array of transactions" do
     trans = Transaction.new("20/03/2017", 10000)
-    @statement.save_history(trans)
+    @statement.save_deposit(trans)
     expect(@statement.transactions.length).to eq(1)
   end
 
   it "should print statement" do
     trans = Transaction.new("20/03/2017", 1000)
-    @statement.save_history(trans)
+    @statement.save_deposit(trans)
     trans1 = Transaction.new("20/03/2017", 1000)
-    @statement.save_history(trans1)
+    @statement.save_deposit(trans1)
     trans2 = Transaction.new("20/03/2017", 1000)
-    @statement.save_history(trans2)
+    @statement.save_deposit(trans2)
     trans3 = Transaction.new("20/03/2017", 1000)
-    @statement.save_history(trans3)
+    @statement.save_deposit(trans3)
     p @statement.display
   end
 
