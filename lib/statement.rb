@@ -10,16 +10,13 @@ def initialize
   @transactions = []
 end
 
-def change_balance(transaction)
-  @balance = @balance + transaction.amount
-  @transactions  << {Date: transaction.date, Amount: transaction.amount, Balance: @balance}
+def save_history(transaction)
+    @transactions  << {Date: transaction.date, Amount: transaction.amount, Balance: balance}
 end
 
-def print_statement
+def display
  pp @transactions
-
 end
-
 
 
 end
