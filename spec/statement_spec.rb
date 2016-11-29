@@ -13,7 +13,15 @@ describe Statement do
   end
 
   it "should print statement" do
-    expect(@statement.display).to eq([])
+    trans = Transaction.new("20/03/2017", 1000)
+    @statement.save_history(trans)
+    trans1 = Transaction.new("20/03/2017", 1000)
+    @statement.save_history(trans1)
+    trans2 = Transaction.new("20/03/2017", 1000)
+    @statement.save_history(trans2)
+    trans3 = Transaction.new("20/03/2017", 1000)
+    @statement.save_history(trans3)
+    p @statement.display
   end
 
 end

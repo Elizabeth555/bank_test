@@ -3,6 +3,8 @@ require 'pp'
 
 class Statement
 
+  LINE_WIDTH = 12
+
   attr_reader :balance, :transactions
 
 def initialize
@@ -11,11 +13,17 @@ def initialize
 end
 
 def save_history(transaction)
-    @transactions  << {Date: transaction.date, Amount: transaction.amount, Balance: balance}
+    @transactions  << {date: transaction.date, amount: transaction.amount, balance: balance}
 end
 
 def display
- pp @transactions
+ puts "Date     || Amount     || Balance      "
+ puts "----------------------------------------"
+
+ @transactions.each do |transaction|
+   puts "#{transaction[:date]} || #{transaction[:amount]} || #{transaction[:balance]}\n"
+ end
+
 end
 
 
