@@ -32,6 +32,7 @@ describe Statement do
       trans = Transaction.new("20/03/2017", 10000)
       @statement.change_balance(trans)
       expect(@statement.transactions.length).to eq(1)
+      p @statement.transactions
     end
 
   end
