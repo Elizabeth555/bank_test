@@ -11,7 +11,7 @@ def initialize
 end
 
 def print_statement
-  @statement.display
+  return @statement.display
 end
 
 def deposit(date, amount)

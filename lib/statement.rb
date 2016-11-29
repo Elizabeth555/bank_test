@@ -24,16 +24,10 @@ def display
  puts "Date     || Credit     || Debit      || Balance      "
  puts "-------------------------------------------------------"
 
- @transactions.each do |transaction|
-   date = transaction[:date]
-   credit = transaction[:credit].to_s
-   debit = transaction[:debit].to_s
-   balance = transaction[:balance].to_s
+ @transactions.reverse.each do |transaction|
 
-   print date.ljust(12)
-   print credit.center(12)
-   print debit.center(12)
-   print balance.rjust(12)
+   print transaction[:date].ljust(12); print transaction[:credit].to_s.center(12);
+   print transaction[:debit].to_s.center(12); print transaction[:balance].to_s.rjust(12)
    puts
  end
 
