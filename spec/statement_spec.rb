@@ -18,7 +18,7 @@ describe Statement do
     trans1 = Transaction.new("20/03/2017", 1000)
     @statement.save_deposit(trans1)
     trans2 = Transaction.new("20/03/2017", 1000)
-    @statement.save_deposit(trans2)
+    @statement.save_withdrawl(trans2)
     trans3 = Transaction.new("20/03/2017", 1000)
     @statement.save_deposit(trans3)
     p @statement.display
