@@ -1,4 +1,5 @@
 require_relative 'transaction.rb'
+require 'pp'
 
 class Statement
 
@@ -15,7 +16,7 @@ def change_balance(transaction)
 end
 
 def print_statement
-
+ pp @transactions
 
 end
 

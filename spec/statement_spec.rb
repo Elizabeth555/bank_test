@@ -7,11 +7,9 @@ describe Statement do
   end
 
   context "print balance" do
-
       it "should print balance" do
         expect(@statement.balance).to eq(1000)
       end
-
   end
 
   context "interacting with transaction" do
@@ -32,11 +30,19 @@ describe Statement do
       trans = Transaction.new("20/03/2017", 10000)
       @statement.change_balance(trans)
       expect(@statement.transactions.length).to eq(1)
-      p @statement.transactions
+    end
+  end
+
+  context "printing statement" do
+
+    it "should print list of all transactions" do
+      trans = Transaction.new("20/03/2017", 10000)
+      @statement.change_balance(trans)
+      trans2 = Transaction.new("25/12/2016", 1000)
+      @statement.change_balance(trans2)
+      expect(@statement.transactions.length).to eq(2)
     end
 
   end
-
-
 
 end
